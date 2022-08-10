@@ -1,0 +1,126 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100%;
+    font-family: "PT Sans", sans-serif;
+    background-color: #150811;
+    height: 100vh;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+.button-icon,
+.button-text,
+.button-text-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+}
+
+.button-icon,
+.button-text {
+    transition: top 500ms;
+}
+
+.button {
+    display: inline-block;
+    position: relative;
+    background-color: #0cbaba;
+    color: #fff;
+    font-style: 1.2rem;
+    border-radius: 1000px;
+    width: 200px;
+    height: 60px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.7), 0 1px rgba(255, 255, 255, 0.3);
+    text-align: center;
+    transition: background-color 500ms, transform 500ms;
+}
+
+.button-text-wrapper {
+    overflow: hidden;
+}
+
+.button-text {
+    line-height: 60px;
+    top: 0;
+}
+
+.button-icon {
+    top: 100%;
+    background: url('https://cl.ly/0X3o100h2H0g/icon-download.svg') no-repeat center center;
+}
+
+.button::before {
+    content: attr(data-tooltip);
+    width: 140px;
+    height: 60px;
+    background-color: #eeb868;
+    font-size: 1rem;
+    border-radius: 0.25em;
+    line-height: 60px;
+    bottom: 90px;
+    left: calc(50% - 70px);
+}
+
+.button::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top-color: #eeb868;
+    left: calc(50% - 10px);
+    bottom: 70px;
+}
+
+.button::after,
+.button::before {
+    position: absolute;
+    transition: all 500ms;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.button:hover {
+    background-color: #01baef;
+}
+
+.button:hover .button-text {
+    top: -100%;
+}
+
+.button:hover .button-icon {
+    top: 0;
+}
+
+.button:hover::before,
+.button:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+.button:hover::before {
+    bottom: 80px;
+}
+
+.button:hover::after {
+    bottom: 60px;
+}
+
+.button:active {
+    transform: translate(2px, 2px);
+}
